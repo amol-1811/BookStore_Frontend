@@ -1,0 +1,237 @@
+<div *ngIf="isLoading" class="spinner-overlay">
+  <div class="spinner"></div>
+</div>
+
+<div>
+  <!-- Login Form (Displayed when isLogin is true) -->
+  <div *ngIf="isLogin">
+    <form [formGroup]="login" (ngSubmit)="onlogin()">
+      <div class="box">
+        <div class="container">
+          <div>
+            <img src="../../../assets/images/book1.png" />
+          </div>
+          <div class="para">
+            <h3 id="content">ONLINE BOOK SHOPPING</h3>
+          </div>
+        </div>
+
+        <div class="container1">
+          <div
+            class="login-text"
+            style="display: flex; justify-content: space-around"
+          >
+            <div (click)="toggleLoginMode(true)">
+              <h2
+                style="font-weight: 500; cursor: pointer;"
+                [ngStyle]="{ 'font-weight': isLogin ? 'bold' : 'normal' }"
+              >
+                LOGIN
+              </h2>
+            </div>
+            <div (click)="toggleLoginMode(false)">
+              <h2
+                style="font-weight: 500; color: grey; cursor: pointer;"
+                [ngStyle]="{ 'font-weight': !isLogin ? 'bold' : 'normal' }"
+              >
+                SIGNUP
+              </h2>
+            </div>
+          </div>
+
+          <div class="Input">
+            <p>
+              <span class="heading1">Email Id</span>
+              <mat-form-field appearance="outline">
+                <input matInput type="email" formControlName="email" />
+                <mat-error>Enter your email</mat-error>
+              </mat-form-field>
+            </p>
+          </div>
+
+          <div class="Input">
+            <p>
+              <span class="heading1">Password</span>
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  [type]="hide() ? 'password' : 'text'"
+                  formControlName="password"
+                />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  type="button"
+                  (click)="clickEvent($event)"
+                  [attr.aria-label]="'Toggle password visibility'"
+                  [attr.aria-pressed]="!hide()"
+                >
+                  <mat-icon>{{
+                    hide() ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+                <mat-error
+                  *ngIf="
+                    login.get('password')?.invalid &&
+                    login.get('password')?.touched
+                  "
+                >
+                  Invalid Password
+                </mat-error>
+              </mat-form-field>
+            </p>
+          </div>
+
+          <div class="forgot-password-link">
+            <a (click)="onForgotPassword()">Forgot Password?</a>
+          </div>
+
+          <div id="loginbtn"  style="margin-top: 20px;">
+          
+              <button mat-raised-button type="submit">Login</button>
+            
+          </div>
+
+          <div>
+            <h3 style="text-align: center">
+              ----------------OR----------------
+            </h3>
+          </div>
+
+          <div class="buttons">
+            <div class="Facebook">
+              <button style="width: 100%" mat-flat-button color="primary" type="button">
+                Facebook
+              </button>
+            </div>
+            <div class="Facebook">
+              <button style="width: 100%" mat-flat-button disabled type="button">
+                Google
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- signup Form (displayed when isLogin is false) -->
+  <div *ngIf="!isLogin">
+    <form [formGroup]="signup" (ngSubmit)="onsignup()">
+      <div class="box">
+        <div class="container">
+          <div>
+            <img src="../../../assets/images/book1.png" />
+          </div>
+          <div>
+            <h3 id="content">ONLINE BOOK SHOPPING</h3>
+          </div>
+        </div>
+
+        <div class="container1">
+          <div
+            class="signup-text"
+            style="
+              display: flex;
+              justify-content: space-around;
+              cursor: pointer;
+            "
+          >
+            <div (click)="toggleLoginMode(true)">
+              <h2
+                [ngStyle]="{
+                  'font-weight': isLogin ? 'bold' : 'normal',
+                  color: isLogin ? 'black' : 'grey'
+                }"
+              >
+                LOGIN
+              </h2>
+            </div>
+            <div (click)="toggleLoginMode(false)">
+              <h2
+                [ngStyle]="{
+                  'font-weight': !isLogin ? 'bold' : 'normal',
+                  color: !isLogin ? 'black' : 'grey'
+                }"
+              >
+                SIGNUP
+              </h2>
+            </div>
+          </div>
+          <div class="input-con">
+            <div class="Input">
+              <p>
+                <span class="heading1">Full Name</span>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="fullName" type="text" />
+                  <mat-error>Invalid FullName</mat-error>
+                </mat-form-field>
+              </p>
+            </div>
+
+            <div class="Input">
+              <p>
+                <span class="heading1">Email Id</span>
+                <mat-form-field appearance="outline">
+                  <input matInput formControlName="email" type="email" />
+                  <mat-error>Invalid Email</mat-error>
+                </mat-form-field>
+              </p>
+            </div>
+
+            <div class="Input">
+              <p>
+                <span class="heading1">Password</span>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    [type]="hide() ? 'password' : 'text'"
+                    formControlName="password"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    type="button"
+                    (click)="clickEvent($event)"
+                    [attr.aria-label]="'Toggle password visibility'"
+                    [attr.aria-pressed]="!hide()"
+                  >
+                    <mat-icon>{{
+                      hide() ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                  <mat-error
+                    *ngIf="
+                      signup.get('password')?.invalid &&
+                      signup.get('password')?.touched
+                    "
+                  >
+                    Invalid Password
+                  </mat-error>
+                </mat-form-field>
+              </p>
+            </div>
+
+            <div class="Input">
+              <p>
+                <span class="heading1">Mobile Number</span>
+                <mat-form-field appearance="outline">
+                  <input
+                    matInput
+                    formControlName="mobileNumber"
+                    type="tel"
+                  />
+                  <mat-error>Invalid MobileNumber</mat-error>
+                </mat-form-field>
+              </p>
+            </div>
+
+            <div id="loginbtn">
+              <button type="submit">Signup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

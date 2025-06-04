@@ -1,0 +1,207 @@
+a {
+  text-decoration: none;
+}
+
+// body.login-mode {
+//     background-color: rgb(51, 51, 51);
+// }
+
+// body.signup-mode {
+//     background-color: #969595; 
+// }
+
+body {
+    background-color: gray;
+}
+
+img {
+  border-radius: 50%;
+  height: 225px;
+  width: 225px;
+}
+
+#content {
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+::ng-deep.snackbar-error {
+  background-color: #f44336 !important; /* Red */
+  color: white !important;
+}
+
+::ng-deep.snackbar-success {
+  background-color: #4caf50 !important; /* Green */
+  color: white !important;
+}
+
+.heading1,
+.heading2 {
+  margin-top: 20px;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.container {
+  width: 300px;
+  height: 390px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 5px 15px #00000029;
+  border-bottom-left-radius: 21px;
+  border-top-left-radius: 21px;
+}
+
+.container1 {
+  width: 300px;
+  height: 442px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 5px 15px #00000029;
+  border: 1px solid #e4e4e4;
+  border-radius: 6px;
+  opacity: 1;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 40px;
+}
+
+.Input mat-form-field {
+  width: 100%;
+  height: 50px;
+}
+
+.forgot-password-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  
+  a {
+    font-size: 12px;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    
+    &:hover {
+      color: #a03037;
+    }
+  }
+}
+
+#loginbtn {
+  background-color: #a03037;
+  width: 100%;
+  height: 37px;
+  display: flex;
+  justify-content: center;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+#loginbtn button {
+  background-color: #a03037;
+  color: white;
+  font-size: larger;
+  outline: none;
+  border: none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.Facebook {
+  width: 40%;
+}
+
+::ng-deep .mat-mdc-form-field-infix {
+  min-height: 40px;
+}
+
+::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+::ng-deep .mat-mdc-form-field,
+.mat-mdc-floating-label {
+  line-height: var(--mdc-typography-body1-line-height, 0px);
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper,
+.mat-mdc-form-field-bottom-align::before {
+  line-height: var(--mdc-typography-caption-line-height, 0px);
+}
+
+::ng-deep .mat-mdc-form-field-bottom-align::before {
+  content: "";
+  height: 10px;
+}
+
+.login-text {
+  margin: 16px; 
+}
+
+.signup-text {
+  margin: 8px; 
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    display: none;
+  }
+
+  .container1 {
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+}
+
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #4f57b0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
