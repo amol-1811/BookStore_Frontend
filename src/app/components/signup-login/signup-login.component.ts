@@ -50,11 +50,13 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
     this.renderer.removeClass(document.body, 'login-mode');
     this.renderer.removeClass(document.body, 'signup-mode');
     
-    if (isLoginMode) {
-      this.renderer.addClass(document.body, 'login-mode');
-    } else {
-      this.renderer.addClass(document.body, 'signup-mode');
-    }
+    setTimeout(() => {
+      if (isLoginMode) {
+        this.renderer.addClass(document.body, 'login-mode');
+      } else {
+        this.renderer.addClass(document.body, 'signup-mode');
+      }
+    }, 10);
   }
 
   clickEvent(event: MouseEvent): void {
@@ -135,7 +137,7 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
   
   onForgotPassword(): void {
   //   //navigate to forgot password page or show modal
-  //   console.log('Forgot password clicked');
+     console.log('Forgot password clicked');
     
   //   // Example: You might want to navigate to a forgot password component
   //   // this.router.navigate(['/forgot-password']);

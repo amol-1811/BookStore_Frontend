@@ -6,7 +6,7 @@
   <!-- Login Form (Displayed when isLogin is true) -->
   <div *ngIf="isLogin">
     <form [formGroup]="login" (ngSubmit)="onlogin()">
-      <div class="box">
+      <div class="box1">
         <div class="container">
           <div>
             <img src="../../../assets/images/book1.png" />
@@ -21,7 +21,7 @@
             class="login-text"
             style="display: flex; justify-content: space-around"
           >
-            <div (click)="toggleLoginMode(true)">
+            <div (click)="toggleLoginMode(true)" [class.active]="isLogin">
               <h2
                 style="font-weight: 500; cursor: pointer;"
                 [ngStyle]="{ 'font-weight': isLogin ? 'bold' : 'normal' }"
@@ -29,7 +29,7 @@
                 LOGIN
               </h2>
             </div>
-            <div (click)="toggleLoginMode(false)">
+            <div (click)="toggleLoginMode(false)" [class.active]="!isLogin">
               <h2
                 style="font-weight: 500; color: grey; cursor: pointer;"
                 [ngStyle]="{ 'font-weight': !isLogin ? 'bold' : 'normal' }"
@@ -87,9 +87,7 @@
           </div>
 
           <div id="loginbtn"  style="margin-top: 20px;">
-          
-              <button mat-raised-button type="submit">Login</button>
-            
+            <button mat-raised-button type="submit">Login</button>
           </div>
 
           <div>
@@ -118,7 +116,7 @@
   <!-- signup Form (displayed when isLogin is false) -->
   <div *ngIf="!isLogin">
     <form [formGroup]="signup" (ngSubmit)="onsignup()">
-      <div class="box">
+      <div class="box2">
         <div class="container">
           <div>
             <img src="../../../assets/images/book1.png" />
@@ -137,7 +135,7 @@
               cursor: pointer;
             "
           >
-            <div (click)="toggleLoginMode(true)">
+            <div (click)="toggleLoginMode(true)" [class.active]="isLogin">
               <h2
                 [ngStyle]="{
                   'font-weight': isLogin ? 'bold' : 'normal',
@@ -147,7 +145,7 @@
                 LOGIN
               </h2>
             </div>
-            <div (click)="toggleLoginMode(false)">
+            <div (click)="toggleLoginMode(false)" [class.active]="!isLogin">
               <h2
                 [ngStyle]="{
                   'font-weight': !isLogin ? 'bold' : 'normal',
