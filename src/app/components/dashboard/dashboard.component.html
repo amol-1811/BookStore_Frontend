@@ -1,0 +1,85 @@
+<header class="dashboard-header">
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+
+  <div class="header-left">
+    <img
+      src="../../../assets/images/book2.png"
+      alt="Bookstore logo"
+      class="logo"
+    />
+    <h3 class="store-title">BookStores</h3>
+  </div>
+  <div class="header-center">
+    <div class="search-wrapper">
+      <img src="assets/images/search.png" class="search-icon" />
+      <input
+        type="text"
+        placeholder="Search books..."
+        class="search-bar"
+        [(ngModel)]="searchText"
+        (keyup)="searchBook($event)"
+      />
+    </div>
+  </div>
+
+  <div class="header-right">
+    <div class="icon-block">
+      <img
+        [matMenuTriggerFor]="menu"
+        src="assets/images/person.svg"
+        class="icon"
+      />
+      <span class="icon-label">{{userName}}</span>
+    </div>
+    <mat-menu
+      #menu="matMenu"
+     
+      [overlapTrigger]="false"
+      xPosition="before" class="custom-menu"
+    >
+      <div>
+        <div class="menu-header" >Hello, {{userName}}</div>
+
+        <div class="menu-item"class="custom-menu" style="margin-left: 15px;">
+          <mat-icon class="icon">person</mat-icon>
+          <span>{{userName}}</span>
+        </div>
+
+        <div class="menu-item" routerLink="/dashboard/orders">
+          <mat-icon class="icon">shopping_cart</mat-icon>
+          
+          <span>My Orders</span>
+          
+        </div>
+
+        <div class="menu-item" routerLink="/dashboard/wishlist">
+          <mat-icon class="icon">favorite</mat-icon>
+          <span>Wishlist</span>
+        </div>
+
+        <!-- Logout -->
+        <div class="logout-container">
+          <button mat-menu-item class="logout-button"
+           (click)="logout()"
+          >LOGOUT</button>
+        </div>
+      </div>
+    </mat-menu>
+
+    <div class="icon-block" style="margin-bottom: -3px;">
+      <div class="badge-wrapper" [matBadge]="cartItemsCount" matBadgeColor="warn" matBadgeOverlap="false">
+      <img src="/assets/images/cart.svg" class="icon" routerLink="/dashboard/cart"/>
+      </div>
+      <span class="icon-label" style="margin-top: -9px;">Cart</span>
+    </div>
+  </div>
+</header>
+
+<router-outlet></router-outlet>
+
+<footer class="dashboard-footer">
+  <p>Copyright &copy; 2025 BookStores private limited. All rights reserved.</p>
+</footer>

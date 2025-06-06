@@ -1,0 +1,22 @@
+<div style="margin: 20px">
+   <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    class="sorting"
+    style="display: flex; justify-content: center; align-items: center; width: 180px;"
+  >
+    <span style="display: inline-flex; align-items: center; gap: 4px;">
+      Sort By Relevance
+      <mat-icon>arrow_drop_down</mat-icon>
+    </span>
+  </button>
+
+  <mat-menu #menu="matMenu" class="sorting">
+    <button mat-menu-item (click)="sortByLowestPrice()">Price: Low to High</button>
+    <button mat-menu-item (click)="sortByHighestPrice()">Price: High to Low</button>
+    <button mat-menu-item (click)="sortByNewestArrival()">Newest Arrivals</button>
+  </mat-menu>
+</div>
+
+<app-display-book [bookArray]="bookArray"
+></app-display-book>

@@ -15,11 +15,20 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GetAllBooksComponent } from './components/get-all-books/get-all-books.component';
+import { DisplayBookComponent } from './components/display-book/display-book.component';
+import { FilterPipe } from './services/filter/filter.pipe';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupLoginComponent
+    SignupLoginComponent,
+    DashboardComponent,
+    GetAllBooksComponent,
+    DisplayBookComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -35,8 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

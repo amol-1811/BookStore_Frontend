@@ -1,0 +1,31 @@
+<div class="books-container">
+  <h2 class="books-heading">Books
+    <span class="item-count">({{bookArray.length}} items)</span>
+  </h2>
+
+  <div class="book-grid">
+    <div class="book-card" *ngFor="let book of bookArray | filter : Search ">
+      <img [src]="book.bookImage" alt="Book Image" class="book-image" />
+
+      <div class="book-details">
+        <h4 class="book-title">{{ book.bookName }}</h4>
+        <p class="book-author">by {{ book.author }}</p>
+
+        <div class="book-rating">
+          <span class="stars">4.5★</span>
+          <span class="rating-count">({{ ratingCount }})</span>
+        </div>
+
+        <div class="book-price">
+          <span class="current-price">₹{{ book.price }}</span>
+          <span class="original-price">₹{{ originalPrice }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination" *ngIf="totalProduct > itemsPerPage">
+    <mat-paginator [length]="totalProduct" [pageSize]="itemsPerPage" [pageSizeOptions]="[8, 12, 16]"
+      [pageIndex]="p - 1" (page)="onPageChange($event)" showFirstLastButtons>
+    </mat-paginator>
+  </div>
+</div>

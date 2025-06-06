@@ -1,0 +1,387 @@
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  width: auto;
+  justify-content: space-between;
+  padding: 12px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  background: hsla(356, 54%, 41%, 1) 0% 0% no-repeat padding-box;
+  opacity: 1;
+  position: fixed; 
+  top: 0;  
+   z-index: 1000; 
+       
+     width: 1900px;      
+  
+}
+body {
+  padding-top: 60px; 
+}
+.user-menu {
+  width: 500px !important; /* wider menu */
+  padding: 10px 0;
+}
+
+.menu-header {
+  text-align: center;
+  font-size: 15px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menu-item:hover {
+  background-color: #aca6a6;
+}
+
+/* .icon {
+  font-size: 22px;
+  margin-right: 12px;
+} */
+
+.faint {
+  opacity: 0.2; /* makes icon faint */
+  color: #d9cece;   /* optional lighter shade */
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  height: 45px;
+}
+
+.logout-button {
+  border: 1px solid brown;
+  color: brown;
+  width: 100px;
+  height: 40px;
+  font-weight: 12px;
+  border-radius: 4px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.header-left .logo {
+  top: 19px;
+margin-left: 164px;
+width: 31px;
+height: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  top: 17px;
+left: 201px;
+width: 91px;
+height: 26px;
+text-align: left;
+font: normal normal normal 20px/26px Roboto;
+letter-spacing: 0px;
+color: hsla(0, 0%, 100%, 1);
+text-transform: capitalize;
+opacity: 1;
+}
+
+
+
+.store-title {
+  color: white; 
+  font-size: 20px;
+  margin: 0;
+}
+
+
+h3{
+    top: 17px;
+left: 201px;
+width: 91px;
+height: 26px;
+text-align: left;
+font: normal normal normal 20px/26px Roboto;
+letter-spacing: 0px;
+color: hsla(0, 0%, 100%, 1);
+text-transform: capitalize;
+opacity: 1;
+}
+
+.header-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  padding: 6px 12px;
+  width: 490px;
+  height: 35px;
+}
+
+.search-wrapper .search-icon {
+  height: 22px;
+  width: 22px;
+  margin-right: 8px;
+  opacity: 10; 
+   filter: brightness(0.6);
+
+}
+.custom-menu {
+  width: 190px;
+}
+
+
+.search-bar {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-right: 150px; 
+}
+
+.icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: -5px; 
+}
+.icon{
+  color: #4b4949; 
+  
+}
+.icon-block .icon {
+  height: 24px;
+  width: 24px;
+  margin-bottom: 4px;
+ 
+ 
+  filter: brightness(0) invert(1);
+}
+
+.icon-label {
+  font-size: 12px;
+  color: #ffffff; 
+}
+.icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.badge-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+::ng-deep .mat-badge-content {
+  font-size: 10px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  width: 16px !important;             /* Force width to match height */
+  line-height: 16px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;      /* Make it circular */
+  background-color: white !important;
+  color: #A03037 !important;
+  top: -9px !important;
+  right: -8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.dashboard-footer {
+  background-color:hsla(356, 23%, 15%, 1);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+  height: 40px;
+   z-index: 999;
+       margin-top: 230px;
+  
+}
+body {
+  padding-bottom: 40px;
+}
+
+.dashboard-footer p {
+  margin: 12.5px;
+  
+}
+
+
+
+/* mobile view */
+
+/* @media screen and (max-width: 600px) {
+  .header-right {
+    padding: 0%;
+  }
+  .material-symbols-outlined {
+    color: white;
+    padding: 15px;
+  }
+  .store-title {
+    color: white;
+    padding-right: 20px;
+  }
+} */
+
+
+/* Default styles for large screens remain unchanged */
+
+/* Tablet view (768px and below) */
+@media screen and (max-width: 992px) {
+  .dashboard-header {
+    flex-wrap: wrap;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+  }
+
+  .header-left {
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .header-left .logo {
+    margin-left: 0;
+  }
+
+  .store-title {
+    font-size: 18px;
+  }
+
+  .header-center {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .search-wrapper {
+    width: 90%;
+    margin: auto;
+  }
+
+  .header-right {
+    justify-content: center;
+    gap: 40px;
+    margin-right: 0;
+    flex-wrap: wrap;
+  }
+
+  .icon-label {
+    font-size: 12px;
+  }
+
+  .user-menu {
+    width: 300px !important;
+  }
+}
+
+/* Mobile view (600px and below) */
+@media screen and (max-width: 600px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .header-left {
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .header-left .logo {
+    width: 28px;
+    height: 22px;
+    margin-left: 0;
+  }
+
+  .store-title {
+    font-size: 18px;
+    padding-right: 0;
+  }
+
+  .header-center {
+    width: 97%;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .search-wrapper {
+    width: 90%;
+  }
+
+  .header-right {
+    width: 100%;
+    justify-content: space-around;
+    margin-right: 0;
+    gap: 30px;
+    margin-top: 10px;
+  }
+
+  .icon-block .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .icon-label {
+    font-size: 10px;
+  }
+
+  .user-menu {
+    width: 90% !important;
+  }
+
+  .logout-button {
+    width: 80px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .dashboard-footer {
+    font-size: 12px;
+    padding: 8px 0;
+  }
+
+  .dashboard-footer p {
+    margin: 8px;
+  }
+}

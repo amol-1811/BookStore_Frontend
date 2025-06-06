@@ -1,0 +1,18 @@
+ .sorting {
+  height: 35px;
+  border: solid 1px rgb(168, 165, 165);
+  font-size: 13px;
+  float: right;
+  margin-right: 189px;
+  margin-top:30px
+  
+}
+.sort{
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .sorting {
+    margin-right: 5px;
+  }
+}

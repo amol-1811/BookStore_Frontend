@@ -88,7 +88,7 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
           panelClass: ['snackbar-success'] 
         });
         // Uncomment when ready to navigate
-        // this.router.navigateByUrl('/dashboard/books');
+        this.router.navigateByUrl('/dashboard/books');
       },
       (error) => {
         this.isLoading = false;
