@@ -1,0 +1,105 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<h2 style="margin-left: 50px"><span routerLink="/dashboard/books" style="color: gray;">dashboard</span>/Books(01)</h2>
+<div class="MainContainer">
+  <div class="containerZero">
+    <img [src]="Book.bookImage" alt="Book Image" class="images" />
+    <img [src]="Book.bookImage" alt="Book Image" class="images" />
+  </div>
+  <div class="containerOne">
+    <img [src]="Book.bookImage" alt="Book Image" class="mainimages" />
+    <div class="twoButton">
+      <button id="addButton" (click)="addCarts()" *ngIf="count">
+        ADD TO BAG
+      </button>
+      <div style="display: flex" *ngIf="addBag" (click)="hideshow()">
+        <button class="decrease" (click)="decrements(Book)">-</button>
+        <span id="Quantity">{{ badgeCount }} </span>
+        <button class="increase" (click)="  increments(Book) ">+</button>
+      </div>
+
+      <button id="wishButton" (click)="addWishlistBook()">
+        <span id="heart" class="material-symbols-outlined"> favorite </span>
+        WISHLIST
+      </button>
+    </div>
+  </div>
+  <div class="containerTwo">
+    <h1 class="contentName" style="font-weight: 500">{{ Book.bookName }}</h1>
+    <p class="contentName" style="font-size: medium; color: grey">
+      By {{ Book.author }}
+    </p>
+    <p class="contentName">
+      <button id="starbutton">
+        4.5 <i id="star" class="material-symbols-outlined"> star </i>
+      </button>
+    </p>
+
+    <h1 class="contentName" id="discountPrice">
+      RS. {{ Book.discountPrice }} <span id="price">Rs.{{ Book.price }}</span>
+    </h1>
+    <hr />
+
+    <p style="color: grey; font-size: larger">*Book Detail</p>
+    <h3>{{Book.description}}
+    </h3>
+    <hr />
+    <h2 class="contentName">Customers Feedback</h2>
+
+    <div class="feedback">
+      <h4 class="contentName">OverAll rating</h4>
+      <div class="stars">
+        <input type="radio" name="rate" id="star5" value="5">
+        <label for="star5" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="star4" value="4">
+        <label for="star4" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="star3" value="3">
+        <label for="star3" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="star2" value="2">
+        <label for="star2" class="fas fa-star"></label>
+        <input type="radio" name="rate" id="star1" value="1">
+        <label for="star1" class="fas fa-star"></label>
+
+      </div>
+
+      <div class="comment">
+        <textarea name="" id="" cols="62" rows="7" placeholder="write your review" [(ngModel)]="comments"></textarea>
+
+      </div>
+      <div class="submitbutton">
+        <button id="submitbutton" type="submit" (click)="addFeedback()"> Submit</button>
+      </div>
+    </div>
+
+    <div></div>
+    <div class="Feedback" *ngFor="let fbck of feedbacks">
+
+      <div class="feedback">
+        <h2 class="contentName">{{ fbck.userId.fullName }}</h2>
+        <div class="stars">
+          <!-- <span>
+              {{ fbck.rating }} </span> -->
+          <input type="radio" name="rate" id="star5" value="5">
+          <label for="star5" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="star4" value="4">
+          <label for="star4" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="star3" value="3">
+          <label for="star3" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="star2" value="2">
+          <label for="star2" class="fas fa-star"></label>
+          <input type="radio" name="rate" id="star1" value="1">
+          <label for="star1" class="fas fa-star"></label>
+
+        </div>
+        <p class="contentName">
+          {{ fbck.comment }}
+        </p>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

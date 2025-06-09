@@ -1,0 +1,140 @@
+<div>
+  <div>
+    <h2 id="homeCart"><span routerLink="/dashboard/books" style="color: gray;">dashboard</span>/My Cart</h2>
+  </div>
+  <div class="summary">
+    <div class="carts">
+      <h2 style="margin: 10px 0px 20px 20px">My Cart({{ cartItemsArray?.length }})</h2>
+
+    </div>
+    <div *ngFor="let cartItem of cartItemsArray; let i = index" class="checkout"
+      [ngClass]="{'checkout-even': i % 2 === 0, 'checkout-odd': i % 2 !== 0}">
+      <div class="left">
+        <img [src]="cartItem.bookModel.bookImage" alt="Book Image" />
+      </div>
+      <div class="right">
+        <h2>{{ cartItem.bookModel.bookName }}</h2>
+        <p>{{ cartItem.bookModel.author }}</p>
+        <h1>
+          Rs. {{ cartItem.bookModel.price }}
+          <span id="price">Rs. 5000</span>
+        </h1>
+        <button class="decrease" (click)="decreasebook(cartItem)">-</button>
+        <span id="increaseNumber">{{ cartItem.quantity }}</span>
+        <button class="increase" (click)="increasebook(cartItem)">+</button>
+        <button (click)="deleteSingleBook(cartItem.cartItemId)" id="removeBook">Remove</button>
+      </div>
+    </div>
+
+    <div *ngIf="placeOrder" style="margin-bottom: 45px; margin-right: 20px">
+      <button class="placeOrder" type="submit" (click)="addresssDetails()">
+        PLACE ORDER
+      </button>
+    </div>
+  </div>
+</div>
+<div class="second" *ngIf="address">
+  <h2 class="heading">Address Details</h2>
+</div>
+
+<form [formGroup]="CustomerDetails" (ngSubmit)="onContinue()">
+  <div *ngIf="!address" class="addresssDetails">
+    <h1 style="padding: 20px">Customer Details</h1>
+
+    <div class="Input">
+      <div class="first">
+        <div>
+          <p class="heading1">Full Name</p>
+          <mat-form-field appearance="outline" class="fullName">
+            <input matInput type="text" formControlName="fullName" />
+            <mat-error>Enter Your FullName</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <p>Mobile Number</p>
+          <mat-form-field appearance="outline" class="mobileNumber">
+            <input matInput formControlName="mobileNumber" />
+            <mat-error>Enter Your Mobile Number</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div id="address">
+        <p>Address</p>
+        <mat-form-field appearance="outline" class="address">
+          <input matInput type="text" formControlName="address" />
+          <mat-error>Enter your Address</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="first">
+        <div>
+          <p class="heading1">City/town</p>
+          <mat-form-field appearance="outline" class="fullName">
+            <input matInput type="text" formControlName="city" />
+            <mat-error>Enter City Name</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <p>State</p>
+          <mat-form-field appearance="outline" class="mobileNumber">
+            <input matInput id="state" formControlName="state" />
+            <mat-error>Enter State Name</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div style="margin-left: 30px">
+        <p>Type</p>
+        <mat-radio-group aria-label="Select an option" formControlName="selectedAddressType" name="addressType">
+          <mat-radio-button *ngFor="let type of addressType" [value]="type" style="margin-left: 30px">
+            <p>
+              {{ type }}
+            </p>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+    </div>
+    <div style="display: flex; justify-content: end">
+      <button class="Continue" *ngIf="continue" type="submit" (click)="onContinue()">
+        Continue
+      </button>
+    </div>
+  </div>
+</form>
+
+<div class="second" *ngIf="summary">
+  <h2 class="heading">Order Summary</h2>
+</div>
+<div class="summary" *ngIf="!summary">
+  <h2 class="heading">Order Summary</h2>
+  <div *ngFor="let cartItem of cartItemsArray; let i = index" class="checkout"
+    [ngClass]="{'checkout-even': i % 2 === 0, 'checkout-odd': i % 2 !== 0}">
+    <ng-container *ngIf="getBookDetail(cartItem.bookId) as book">
+      <div class="left">
+        <img [src]="book.bookImage" class="checkimage" />
+      </div>
+      <div class="right">
+        <h2>{{ book.bookName }}</h2>
+        <p>{{ book.author }}</p>
+        <h1>
+          Rs. {{ book.price }}
+          <!-- <span id="price">Rs. {{ book.price }}</span> -->
+        </h1>
+        <h1> TotalPrice
+          Rs. {{ cartItem.totalPrice }}
+          <!-- <span id="price">Rs. {{ cartItem.totalPrice }}</span> -->
+        </h1>
+
+      </div>
+    </ng-container>
+  </div>
+
+
+  <div style="display: flex; justify-content: end">
+    <button routerLink="/dashboard/order" class="CheckOut" (click)="confirmOrder()">CHECKOUT</button>
+  </div>
+</div>

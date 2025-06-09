@@ -1,20 +1,18 @@
 .dashboard-header {
   display: flex;
   align-items: center;
-  width: auto;
   justify-content: space-between;
-  padding: 12px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  padding: 0 20px;
+  background: hsla(356, 54%, 41%, 1);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  height: 50px;
-  background: hsla(356, 54%, 41%, 1) 0% 0% no-repeat padding-box;
-  opacity: 1;
-  position: fixed; 
-  top: 0;  
-   z-index: 1000; 
-       
-     width: 1900px;      
-  
+  z-index: 1000;
 }
+
 body {
   padding-top: 60px; 
 }
@@ -168,6 +166,7 @@ opacity: 1;
   flex-direction: column;
   align-items: center;
   margin-right: -5px; 
+  cursor: pointer;
 }
 .icon{
   color: #4b4949; 
@@ -224,7 +223,7 @@ opacity: 1;
   color: white;
   text-align: center;
   padding: 10px 0;
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100%;
   font-size: 14px;

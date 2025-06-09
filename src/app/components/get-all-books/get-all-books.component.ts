@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { BookService } from 'src/app/services/book/book.service';
 import { DataService } from 'src/app/services/data/data.service';
 import { SearchService } from 'src/app/services/search/search.service';
+
 
 @Component({
   selector: 'app-get-all-books',
@@ -12,6 +14,7 @@ export class GetAllBooksComponent implements OnInit {
   bookArray: any[] = [];
   filteredBooks: any[] = [];
   originalBooks: any[] = [];
+  booksObject: any = {};
   
   constructor(
     private bookService: BookService, 
@@ -20,7 +23,7 @@ export class GetAllBooksComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllBooks();
+    this.getPagedBooks(1);
     this.subscribeToSearchResults();
   }
 
@@ -39,6 +42,29 @@ export class GetAllBooksComponent implements OnInit {
       }
     });
   }
+
+  getPagedBooks(pageNumber: number): void {
+    this.bookService.getPaginatedBooks(pageNumber, 8).subscribe({
+      next: (response: any) => {
+        this.booksObject = response.data || {};
+        this.bookArray = Array.isArray(this.booksObject.data) ? this.booksObject.data : [];
+        this.originalBooks = [...this.bookArray];
+        this.bookArray.reverse();
+        console.log('Books loaded:', this.bookArray);
+      },
+      error: (error) => {
+        console.error('Error fetching books:', error);
+        this.bookArray = [];
+        this.originalBooks = [];
+      }
+    });
+  }
+
+  onPageChange(event: PageEvent): void {
+      const pageNumber = event.pageIndex + 1;
+      this.getPagedBooks(pageNumber);
+      console.log(`Page changed to: ${pageNumber}, Items per page: ${event.pageSize}`);
+    }
 
   subscribeToSearchResults(): void {
     this.searchService.searchResults$.subscribe({

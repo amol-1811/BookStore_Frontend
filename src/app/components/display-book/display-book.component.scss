@@ -1,274 +1,180 @@
-/* .books-container {
-  border: 2px dashed red;
-}
-.books-heading {
-    
-  border: 2px solid green;
-} */
+/* General Container and Heading Styles */
 .books-container {
-    margin-top: 75px;
+  margin-top: 75px;
   padding: 20px;
-  position: relative; /* not absolute */
   min-height: 50px;
 }
 
-.book-grid {
-  display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  padding: 1rem; */
-  // grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.5rem;
-    padding: 2rem;
-//     margin-top: 20px;
-//     margin-right: 159px;
-//     margin-left: 159px;
-    margin: 2rem auto; /* Center the grid with vertical margin */
-  width: calc(100% - 4rem); /* Make the grid responsive with side padding */
-  max-width: 1200px; /* Optional: limit max width for large screens */
-  box-sizing: border-box;
- }
-
-.books-text{
-    top: 82px;
-left: 174px;
-width: 70px;
-height: 33px;
-/* UI Properties */
-text-align: left;
-font: normal normal normal 25px/33px Roboto;
-letter-spacing: 0px;
-color: #0A0102;
-opacity: 1;
+.books-heading {
+  font-size: 25px;
+  font-family: Roboto, sans-serif;
+  color: #0a0102;
+  text-align: left;
+  margin-left: 10%; /* Using percentage for better responsiveness */
+  margin-bottom: 20px;
 }
 
+.item-count {
+  font-size: 14px;
+  color: #8b8989;
+  font-weight: normal;
+  margin-left: 5px;
+}
+
+/* Book Grid Layout */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Default for larger screens */
+  gap: 1.5rem;
+  padding: 0 10%; /* Padding on the sides */
+  box-sizing: border-box;
+}
+
+/* Book Card Styling */
 .book-card {
   border: 1px solid #ddd;
   border-radius: 5px;
-  padding: 1rem;
-  background:rgb(249, 247, 247);
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
- margin:0;
-  top: 145px;
-/* left: 954px; */
-width: 195px;
-height: 200px;
-display: flex;
+  background: #f9f7f7;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  
-/* margin-left: 0%; */
+  overflow: hidden; /* Ensures content stays within the card's bounds */
+  height: auto;
 }
 
 .book-card:hover {
-  transform: scale(1.02);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .book-image {
-  top: 166px;
-left: 759px;
-width: 109px;
-/* height: 135px; */
- height: 130px;
-    margin: 0 auto;
+  width: 100%;
+  height: 180px; /* A more consistent height for the image area */
+  object-fit: contain; /* 'contain' or 'cover' can be used depending on the desired look */
+  cursor: pointer;
+  padding: 10px;
+  box-sizing: border-box;
+}
 
-
-opacity: 1;
+.book-details {
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows this section to fill the available space */
 }
 
 .book-title {
-  top: 327px;
-left: 713px;
-width: 250px;
-height: 2px;
-/* UI Properties */
-text-align: left;
-font: normal normal normal 10px/12px Roboto;
-letter-spacing: 0px;
-color: #0A0102;
-font-size: 13px;
- margin-left:40px
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: #0a0102;
+  margin-bottom: 5px;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .book-author {
-  top: 349px;
-left: 713px;
-width: 150px;
-height: 2px;
-text-align: left;
-font: normal normal normal 10px/13px Roboto;
-letter-spacing: 0px;
-color: #878787;
- margin-left:40px
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  color: #878787;
+  margin-bottom: 10px;
 }
 
 .book-rating {
-  color: #f4f9f5;
-  font-size: 0.7rem;
-  margin-bottom: 0.5rem;
-  background-color:#0ea525 ;
-  width: 28px;
-  height:18px;
-   margin-left:40px
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stars {
+  background-color: #0ea525;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
 }
 
 .rating-count {
   color: #888;
-  margin-left: 4px;
-  
-}
-.books-heading {
-  font-size: 15px;
-  font-weight: normal normal normal 25px/33px Roboto;;
-  color: #000; /* High contrast */
-  text-align: left;
-  z-index: 10; /* In case something overlaps */
-  margin-left: 190px;
-
-}
-.item-count {
   font-size: 12px;
-  color: #8b8989; 
-  font-weight: normal;
-  margin-left: 0px;
-}
-
-
-::ng-deep .mat-typography h2 {
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 32px;
-    font-family: Roboto, sans-serif;
-    letter-spacing: .0125em;
-   
-    }
-
-.books-container {
-  padding: 20px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-
-  ::ng-deep .mat-paginator {
-    background: transparent;
-  }
-
-  ::ng-deep .mat-paginator-range-label {
-    font-size: 13px;
-  }
-
-  ::ng-deep .mat-paginator-icon {
-    color: #000;
-  }
-
-  ::ng-deep .mat-paginator-page-size-select {
-    margin-left: 8px;
-  }
-
-  ::ng-deep .mat-paginator-navigation-previous,
-  ::ng-deep .mat-paginator-navigation-next,
-  ::ng-deep .mat-paginator-navigation-first,
-  ::ng-deep .mat-paginator-navigation-last {
-    color: #333;
-  }
+  margin-left: 8px;
 }
 
 .book-price {
-  font-size: 1rem;
-  top: 689px;
-left: 974px;
-width: 48px;
-height: 16px;
-/* UI Properties */
-text-align: left;
-font: normal normal bold 12px/16px Roboto;
-letter-spacing: 0px;
-color: #0A0102;
-opacity: 1;
+  margin-top: auto; /* Pushes the price to the bottom of the card */
+  font-family: Roboto, sans-serif;
 }
 
 .current-price {
-  color: #b12704;
+  color: #0a0102;
   font-weight: bold;
-  margin-left:40px
-}
-.book-details{
-      margin-left: 40px;
-      margin-top: 8px
+  font-size: 16px;
 }
 
 .original-price {
   text-decoration: line-through;
   color: #949191;
-  margin-left: 6px;
+  margin-left: 8px;
+  font-size: 14px;
 }
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+/* Responsive Adjustments for Tablet View */
+@media screen and (max-width: 992px) {
+  .book-grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 5%;
+  }
+
+  .books-heading {
+    margin-left: 5%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive Adjustments for Mobile View */
 @media screen and (max-width: 600px) {
-  .box {
+  .books-heading {
+    text-align: center;
+    margin-left: 0;
+    font-size: 22px;
+  }
+
+  .book-grid {
+    grid-template-columns: 1fr; /* This creates a single column */
+    padding: 0 5%; /* Adjust padding for mobile */
+  }
+
+  .book-card {
+    flex-direction: row; /* Display card content side-by-side */
     align-items: center;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-
-    margin-left: 40px; 
-   }
-  h1 {
-    margin-left: 80px;
-  }
-  .books-container{
-        margin-left: -128px
-  }
-  .pagination{
-        margin-left: -128px
-  }
-
-}
-
-/* @media (min-width: 600px) {
-  .book-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-    padding: 1.5rem;
-    margin-left: 140px;
-    margin-right: 60px;
-    margin-top: 1px; 
-    padding-left: 1 rem;
-  }
-
-  /* .book-image {
-    height: 220px;
-  } */
-
-  /* .book-title {
-    font-size: 0.9rem;
-  }
-} */ 
-
-
-
-
-/* @media (min-width: 1366px) {
-  .book-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-    margin-top: 20px;
-    margin-right: 159px;
-    margin-left: 159px;
-   
-   
+    padding: 10px;
   }
 
   .book-image {
-    height: 130px;
-    margin: 0 auto;
+    width: 100px; /* Fixed width for the image */
+    height: 120px;
+    padding: 0;
+    margin-right: 15px;
+    flex-shrink: 0; /* Prevents the image from shrinking */
   }
 
-  .book-title {
-    font-size: 0.8rem;
+  .book-details {
+    padding: 0;
+    flex-grow: 1;
+    align-items: flex-start; /* Align details to the start */
   }
-} */
+}

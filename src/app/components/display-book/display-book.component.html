@@ -5,7 +5,7 @@
 
   <div class="book-grid">
     <div class="book-card" *ngFor="let book of bookArray | filter : Search ">
-      <img [src]="book.bookImage" alt="Book Image" class="book-image" />
+      <img [src]="book.bookImage" alt="Book Image" class="book-image" (click)="onBookClick(book)" />
 
       <div class="book-details">
         <h4 class="book-title">{{ book.bookName }}</h4>
@@ -23,9 +23,9 @@
       </div>
     </div>
   </div>
-  <div class="pagination" *ngIf="totalProduct > itemsPerPage">
-    <mat-paginator [length]="totalProduct" [pageSize]="itemsPerPage" [pageSizeOptions]="[8, 12, 16]"
-      [pageIndex]="p - 1" (page)="onPageChange($event)" showFirstLastButtons>
+  <div class="pagination" *ngIf="booksObject.totalCount > 0">
+    <mat-paginator [length]="booksObject.totalCount" [pageSize]="booksObject.pageSize" [pageIndex]="booksObject.pageIndex - 1"
+      (page)="onPageChange($event)" showFirstLastButtons>
     </mat-paginator>
   </div>
 </div>

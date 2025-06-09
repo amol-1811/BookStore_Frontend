@@ -20,6 +20,9 @@ import { GetAllBooksComponent } from './components/get-all-books/get-all-books.c
 import { DisplayBookComponent } from './components/display-book/display-book.component';
 import { FilterPipe } from './services/filter/filter.pipe';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     DashboardComponent,
     GetAllBooksComponent,
     DisplayBookComponent,
-    FilterPipe
+    FilterPipe,
+    BookDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

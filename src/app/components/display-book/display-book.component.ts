@@ -1,8 +1,9 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data/data.service';
 import { BookService } from 'src/app/services/book/book.service';
 import { PageEvent } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-display-book',
@@ -12,14 +13,16 @@ import { PageEvent } from '@angular/material/paginator';
 export class DisplayBookComponent implements OnInit, OnChanges {
   
   @Input() bookArray: any[] = [];
-  
+  @Input() booksObject: any = {};
+  @Output() pageChange: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
   Search: string = '';
   ratingCount: number = 20;
   originalPrice: number = 2000;
-  totalProduct: number = 0;
   pagination: boolean = true;
   p: number = 1;
   itemsPerPage: number = 8;
+  totalProduct: number = 0;
+  
   filteredBooks: any[] = [];
 
   constructor(private dataService: DataService, private router: Router, private bookService: BookService) {}
@@ -82,14 +85,12 @@ export class DisplayBookComponent implements OnInit, OnChanges {
   onBookClick(book: any): void {
     if (book) {
       this.dataService.SendBookDetails(book);
-      this.router.navigateByUrl('/dashboard/book-card');
+      this.router.navigateByUrl('/dashboard/book-detail');
     }
   }
 
   onPageChange(event: PageEvent): void {
-    this.p = event.pageIndex + 1;
-    this.itemsPerPage = event.pageSize;
-    console.log(`Page changed to: ${this.p}, Items per page: ${this.itemsPerPage}`);
+    this.pageChange.emit(event);
   }
   
   resetPagination(): void {

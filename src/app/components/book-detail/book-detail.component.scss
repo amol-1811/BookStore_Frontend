@@ -1,0 +1,303 @@
+.MainContainer {
+  display: flex;
+  width: 98%;
+  height: fit-content;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  opacity: 1;
+  margin-top: 50px;
+}
+
+h2{
+  margin-top: 100px;
+}
+
+.containerOne {
+  width: 30%;
+}
+
+.containerTwo {
+  width: 40%;
+  padding-left: 10px;
+  height: fit-content;
+}
+
+#mainimage {
+  width: 200px;
+  border: 1px solid #d1d1d1;
+  padding: 30px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  height: inherit;
+  width: 250px;
+    margin-left: 80px;
+    
+    height: 350px;
+}
+#price {
+  font-size: small;
+  font-weight: 200;
+  text-decoration: line-through;
+  border: none;
+}
+#discountPrice {
+  border: none;
+  font-weight: 500;
+}
+
+.twoButton {
+  display: flex;
+}
+
+button {
+  width: 40%;
+  margin: 3px;
+  padding: 3%;
+  color: white;
+  background-color: brown;
+  border: none;
+  cursor: pointer;
+}
+#wishButton {
+  background-color: #333333;
+}
+#heart {
+  font-size: 17px;
+  color: white;
+}
+#starbutton {
+  background-color: green;
+  color: white;
+  border: none;
+  font-weight: bold;
+  width: 60px;
+  padding: 0px;
+}
+#star {
+  font-size: 15px;
+}
+.contentName {
+  padding: 0px 0px 0px 0px;
+  margin: 8px;
+  border: none;
+}
+.containerZero {
+  display: flex;
+  flex-direction: column;
+  padding: 0%;
+  margin-left: 100px;
+}
+.images {
+  width: 40px;
+  height: 50px;
+  padding: 5px;
+  border: 1px solid #d1d1d1;
+}
+.mainimages{
+  width: 250px;
+    margin-left: 55px;
+   
+    height: 350px;
+}
+
+.decrease,
+.increase {
+  border-radius: 50%;
+  border: 0.5px solid rgb(176, 173, 173);
+  color: black;
+  padding: 7px;
+  background: #fafafa 0% 0% no-repeat padding-box;
+  border: 1px solid #dbdbdb;
+}
+#Quantity {
+  border: solid grey 1px;
+  width: 100px;
+  height: 40px;
+  border: 1px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+.Feedback {
+  margin-top: 30px;
+}
+.feedback {
+  width: 100%;
+  background: rgb(249, 246, 246);
+  padding: 10px 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+.feedback .stars input {
+  display: none;
+}
+.stars label {
+  font-size: 20px;
+  color: lightgrey;
+
+  padding: 8px;
+  float: right;
+  transition: all 0.2s ease;
+}
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label {
+  color: #fd4;
+}
+input:checked ~ label {
+  color: #fd4;
+}
+textarea {
+  border: solid 1px lightgray;
+}
+#submitbutton {
+  width: 130px;
+  padding: 10px;
+  margin-right: 20px;
+  background-color: #3371b5;
+}
+.submitbutton {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+@media only screen and (max-width: 600px) {
+  .MainContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .containerZero {
+    display: flex;
+    margin: 0%;
+
+    position: absolute;
+  }
+  .containerOne {
+    width: 20%;
+    height: 20%;
+  }
+  .containerTwo {
+    width: 90%;
+  }
+  textarea {
+    width: 100%;
+  }
+
+  .twoButton {
+    display: flex;
+    justify-content: space-around;
+    width: 500%;
+  }
+  button {
+    margin-right: 0%;
+  }
+  #mainimage {
+    margin-left: 60px;
+  }
+}
+@media (min-width:601px) and (max-width:1100px) {
+  .MainContainer {
+    width: 99%;
+  
+  }
+  .containerZero {
+    display: flex;
+    margin: 0%;
+
+    position: absolute;
+  }
+  .containerOne {
+    width: 20%;
+    height: 20%;
+  }
+  .containerTwo {
+    margin-left: 220px;
+  }
+  textarea {
+    width: 100%;
+  }
+
+  .twoButton {
+    display: flex;
+    justify-content: space-around;
+    width: 350px;
+    margin-left: 40px;
+  }
+  button {
+    margin-right: 0%;
+  }
+  #mainimage {
+    margin-left: 60px;
+  }
+}
+@media (min-width:601px) and (max-width:780px) {
+  .MainContainer {
+    width: 99%;
+  
+  }
+  .containerZero {
+    display: flex;
+    margin: 0%;
+
+    position: absolute;
+  }
+  .containerOne {
+    width: 20%;
+    height: 20%;
+  }
+  .containerTwo {
+    margin-left: 200px;
+  }
+  textarea {
+    width: 100%;
+  }
+
+  .twoButton {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+  }
+  button {
+    margin-right: 0%;
+  }
+  #mainimage {
+    margin-left: 60px;
+    width: 200px;
+  }
+
+}
+@media (min-width:420px) and (max-width:600px) {
+  .MainContainer {
+    width: 99%;
+  
+  }
+  .containerZero {
+    display: flex;
+    margin: 0%;
+
+    position: absolute;
+  }
+  .containerOne {
+    width: 20%;
+    height: 20%;
+  }
+ 
+  textarea {
+    width: 100%;
+  }
+
+  .twoButton {
+    display: flex;
+    justify-content: space-around;
+    width: 520px;
+  }
+ 
+  #mainimage {
+    margin-left: 60px;
+    width: 350px;
+  }
+}

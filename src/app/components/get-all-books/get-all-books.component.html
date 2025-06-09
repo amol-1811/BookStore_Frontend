@@ -16,7 +16,6 @@
     <button mat-menu-item (click)="sortByHighestPrice()">Price: High to Low</button>
     <button mat-menu-item (click)="sortByNewestArrival()">Newest Arrivals</button>
   </mat-menu>
-</div>
 
-<app-display-book [bookArray]="bookArray"
-></app-display-book>
+
+<app-display-book [bookArray]="bookArray" [booksObject]="booksObject" (pageChange)="onPageChange($event)"></app-display-book>
