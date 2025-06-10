@@ -6,6 +6,7 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { GetAllBooksComponent } from './components/get-all-books/get-all-books.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { CartComponent } from './components/cart/cart.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'books', component: GetAllBooksComponent },
       { path: '', redirectTo: '/books', pathMatch: 'full' },
       { path: 'book-detail', component: BookDetailComponent},
-      { path: 'cart', component: CartComponent}
+      { path: 'cart', component: CartComponent },
+      { path: 'wishlist', component: WishlistComponent }
     ],
   },
   { path: '**', redirectTo: 'login' } 

@@ -20,9 +20,13 @@
         <button class="increase" (click)="  increments(Book) ">+</button>
       </div>
 
-      <button id="wishButton" (click)="addWishlistBook()">
-        <span id="heart" class="material-symbols-outlined"> favorite </span>
-        WISHLIST
+      <button id="wishButton" (click)="addWishlistBook()" [class.active-wishlist]="isInWishlist">
+        <span id="heart" class="material-icons heart-icon" [class.heart-active]="isInWishlist">
+          {{ isInWishlist ? 'favorite' : 'favorite_border' }}
+        </span>
+        <span class="wishlist-text">
+          {{ isInWishlist ? 'REMOVE' : 'WISHLIST' }}
+        </span>
       </button>
     </div>
   </div>

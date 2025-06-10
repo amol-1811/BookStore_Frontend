@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data/data.service';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -20,6 +21,7 @@ export class BookDetailComponent implements OnInit, OnDestroy {
   hideBadge: boolean = true;
   showCount: boolean = true;
   badgeCount: number = 1;
+  isInWishlist: boolean = false; // New property to track wishlist status
 
   private bookDataSubscription: Subscription = new Subscription();
 
@@ -39,7 +41,8 @@ export class BookDetailComponent implements OnInit, OnDestroy {
   constructor(
     private dataservice: DataService,
     private cartService: CartService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private wishlistService: WishlistService
   ) {
     this.hideBadge = true;
     this.badgeCount = 1;
@@ -54,6 +57,7 @@ export class BookDetailComponent implements OnInit, OnDestroy {
         // Check if this book is already in cart and set the initial quantity
         if (this.Book?.bookId) {
           this.checkBookInCart();
+          this.checkBookInWishlist(); // Check wishlist status on init
         }
       }
     );
@@ -104,6 +108,29 @@ export class BookDetailComponent implements OnInit, OnDestroy {
     );
   }
 
+  // New method to check if book is in wishlist
+  checkBookInWishlist(): void {
+    const bookId = this.Book?.bookId;
+    if (!bookId) return;
+
+    this.wishlistService.getWishlistBooks().subscribe(
+      (response: any) => {
+        console.log('Checking wishlist status:', response);
+        const wishlistItems = response?.data || [];
+        const existingItem = wishlistItems.find(
+          (item: any) => item.bookId === bookId || item.bookModel?.bookId === bookId
+        );
+        
+        this.isInWishlist = !!existingItem;
+        console.log('Book in wishlist:', this.isInWishlist);
+      },
+      (error) => {
+        console.error('Error checking wishlist:', error);
+        this.isInWishlist = false;
+      }
+    );
+  }
+
   addCarts() {
     const bookId = this.Book?.bookId;
     const quantity = this.item_qty;
@@ -142,9 +169,54 @@ export class BookDetailComponent implements OnInit, OnDestroy {
     );
   }
 
+  // Updated wishlist method with toggle functionality
   addWishlistBook() {
-    // Wishlist functionality - currently commented out in original code
-    console.log('Wishlist functionality not implemented');
+    const bookId = this.Book?.bookId;
+
+    if (!bookId) {
+      console.error('Book ID is missing');
+      return;
+    }
+
+    if (this.isInWishlist) {
+      // Remove from wishlist
+      this.wishlistService.removeFromWishlist(bookId)?.subscribe(
+        (res: any) => {
+          console.log('Book removed from wishlist', res);
+          this.isInWishlist = false;
+          this.snackbar.open('Book Removed from Wishlist', '', {
+            duration: 2000,
+            verticalPosition: 'bottom',
+          });
+        },
+        (error) => {
+          console.error('Error removing from wishlist', error);
+          this.snackbar.open('Failed to Remove from Wishlist', '', {
+            duration: 2000,
+            verticalPosition: 'bottom',
+          });
+        }
+      );
+    } else {
+      // Add to wishlist
+      this.wishlistService.addToWishlist(bookId)?.subscribe(
+        (res: any) => {
+          console.log('Book added to wishlist', res);
+          this.isInWishlist = true;
+          this.snackbar.open('Book Added to Wishlist', '', {
+            duration: 2000,
+            verticalPosition: 'bottom',
+          });
+        },
+        (error) => {
+          console.error('Error adding to wishlist', error);
+          this.snackbar.open('Failed to Add to Wishlist', '', {
+            duration: 2000,
+            verticalPosition: 'bottom',
+          });
+        }
+      );
+    }
   }
 
   hideshow() {

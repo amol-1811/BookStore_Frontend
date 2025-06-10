@@ -1,0 +1,34 @@
+<div class="summary">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+ <h2 style="padding-top: 10px"><span routerLink="/dashboard/books" style="color: gray;">dashboard</span>/My Wishlist</h2>
+
+  <div class="wishlist">
+    <h2 style="margin: 10px 0px 20px 20px">
+      My Wishlist({{ wishlist.length }})
+    </h2>
+  </div>
+  <div *ngFor="let wish of wishlist" class="checkout">
+    <div style="display: flex; gap: 30px">
+      <div class="left">
+        <img [src]="wish.bookImage" class="checkimage" />
+      </div>
+
+      <div class="right">
+        <h2>{{ wish?.bookName }}</h2>
+        <p>{{ wish?.author }}</p>
+        <h1>
+          Rs. {{ wish?.discountPrice }}
+          <span id="price">Rs. {{ wish?.price }}</span>
+        </h1>
+      </div>
+    </div>
+    <div class="removeBook">
+      <span
+        class="material-symbols-outlined"
+        (click)="deletewishListBooks(wish.bookId)"
+      >
+        delete
+      </span>
+    </div>
+  </div>
+</div>

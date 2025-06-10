@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MatRadioModule } from '@angular/material/radio';
     DisplayBookComponent,
     FilterPipe,
     BookDetailComponent,
-    CartComponent
+    CartComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
