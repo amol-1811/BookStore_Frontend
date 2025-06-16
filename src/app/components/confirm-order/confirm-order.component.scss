@@ -1,0 +1,47 @@
+.Orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  width: 300px;
+  height: 230px;
+  margin-top: 40px;
+}
+
+.details {
+  text-align: center;
+  font: normal normal normal 18px/22px Lato;
+  color: #333232;
+  padding: 20px;
+}
+td,
+th {
+  padding: 20px;
+  text-align: center;
+}
+th {
+  background-color: #ebeaea;
+}
+table,
+th,
+td {
+  border-collapse: collapse;
+  background: #fafafa 0% 0% no-repeat padding-box;
+  border: 1px solid #dcdcdc;
+  opacity: 1;
+}
+.Button {
+  padding: 20px;
+}
+button {
+  font: normal normal medium 14px/17px Lato;
+  color: #ffffff;
+  text-transform: uppercase;
+  background: #3371b5 0% 0% no-repeat padding-box;
+  border-radius: 3px;
+  padding: 10px;
+  border: none;
+}

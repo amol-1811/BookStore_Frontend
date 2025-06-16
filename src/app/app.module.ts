@@ -24,6 +24,8 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { CartComponent } from './components/cart/cart.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { PlaceOrderComponent } from './components/order-details/place-order.component';
+import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     FilterPipe,
     BookDetailComponent,
     CartComponent,
-    WishlistComponent
+    WishlistComponent,
+    PlaceOrderComponent,
+    ConfirmOrderComponent
   ],
   imports: [
     BrowserModule,

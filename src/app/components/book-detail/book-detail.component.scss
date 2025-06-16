@@ -7,6 +7,7 @@
   background: #ffffff 0% 0% no-repeat padding-box;
   opacity: 1;
   margin-top: 50px;
+  padding-bottom: 80px;
 }
 
 h2{
@@ -189,8 +190,30 @@ input:not(:checked) ~ label:hover ~ label {
 input:checked ~ label {
   color: #fd4;
 }
-textarea {
-  border: solid 1px lightgray;
+.fa-star {
+  font-size: 20px;
+  color: lightgray;
+  transition: all 0.2s ease;
+}
+
+.fa-star.active-star {
+  color: #ffd700; /* yellow glow */
+  text-shadow: 0 0 6px #ffd700;
+}
+
+.comment {
+  width: 100%;
+  padding: 0 10px; 
+  box-sizing: border-box; 
+  
+  textarea {
+    width: 100%;
+    box-sizing: border-box; 
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    resize: vertical; 
+  }
 }
 #submitbutton {
   width: 130px;

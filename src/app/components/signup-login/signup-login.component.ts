@@ -38,7 +38,7 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
       fullName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      mobileNumber: ['', [Validators.required, Validators.minLength(10)]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(10)]],
     });
 
     this.toggleLoginMode(this.isLogin);
@@ -82,7 +82,11 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
       (response: any) => {
         this.isLoading = false;
         console.log('Login successful', response);
+        console.log('User ID:', response.data.fullName);
+        
         localStorage.setItem('authToken', response.data.token);
+        localStorage.setItem('registeredUser', response.data.fullName);
+        
         this.snackbar.open('Login successful!', 'close', { 
           duration: 3000, 
           panelClass: ['snackbar-success'] 
@@ -122,6 +126,7 @@ export class SignupLoginComponent implements OnInit, OnDestroy {
           panelClass: ['snackbar-success'] 
         });
         this.signup.reset(); 
+        this.toggleLoginMode(true);
       },
       (error) => {
         this.isLoading = false;

@@ -7,6 +7,8 @@ import { GetAllBooksComponent } from './components/get-all-books/get-all-books.c
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { PlaceOrderComponent } from './components/order-details/place-order.component';
+import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,7 +22,9 @@ const routes: Routes = [
       { path: '', redirectTo: '/books', pathMatch: 'full' },
       { path: 'book-detail', component: BookDetailComponent},
       { path: 'cart', component: CartComponent },
-      { path: 'wishlist', component: WishlistComponent }
+      { path: 'wishlist', component: WishlistComponent },
+      { path: 'place-order', component: PlaceOrderComponent },
+      { path: 'confirm-order', component: ConfirmOrderComponent }
     ],
   },
   { path: '**', redirectTo: 'login' } 

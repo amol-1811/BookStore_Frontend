@@ -13,7 +13,7 @@ import { CartService } from 'src/app/services/cart/cart.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   searchText: string = '';
-  userName: string = 'Amol';
+  userName: string = 'user';
   cartItemsCount: number = 0;
   cartBook: any[] = [];
   
@@ -28,7 +28,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.createCartIfNotExists();
     this.initializeCartBadge();
+    const userString = localStorage.getItem('registeredUser');
+    if (userString !== null && userString !== undefined) {
+      const firstName = userString.split(' ')[0];
+      this.userName = firstName || 'user';
+      console.log("User name found in local storage:", this.userName);
+    } else {
+      console.warn("User name not found in local storage");
+    }
   }
 
   ngOnDestroy(): void {
@@ -36,6 +45,27 @@ export class DashboardComponent implements OnInit, OnDestroy {
     if (this.cartCountSubscription) {
       this.cartCountSubscription.unsubscribe();
     }
+  }
+
+  private createCartIfNotExists(): void {
+    this.cartService.getCart()
+    .subscribe({
+      next: response => {
+        console.log("Cart already exists for user");
+      },
+      error: err => {
+        console.warn("Cart does not exists for the user. Creating a new cart");
+        this.cartService.createCart()
+        .subscribe({
+          next: resp => {
+            console.log(`Cart is created for the user successfully. ${resp?.data}`);
+          },
+          error: err => {
+            console.log("Unable to create the cart. Please try later");
+          }
+        });
+      }
+    })
   }
 
   private initializeCartBadge(): void {

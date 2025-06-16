@@ -11,7 +11,7 @@
 }
 
 .checkout:nth-child(odd) {
-  background-color: #dcdcdc;
+  background-color: #f8f8f8;
 }
 
 .summary {
@@ -19,16 +19,24 @@
   height: fit-content;
   margin-left: 150px;
   margin-top: 15px;
+  margin-bottom: 100px;
+  /* Added margin-bottom to prevent overlap with footer */
   border: 1px solid #e2e2e2;
 }
+
 h4 {
   margin: 20px;
   margin-left: 150px;
 }
+
+.dash {
+  cursor: pointer;
+}
+
 #homeCart {
   margin: 70px;
   margin-left: 150px;
-  margin-top:90px
+  margin-top: 90px;
 }
 
 img {
@@ -37,12 +45,14 @@ img {
   margin-left: 30px;
   margin-top: 20px;
 }
+
 #removeBook {
   border: none;
   background: none;
   cursor: pointer;
   padding-left: 20px;
 }
+
 .placeOrder {
   float: right;
   width: 130px;
@@ -53,6 +63,7 @@ img {
   border-radius: 2px;
   cursor: pointer;
 }
+
 .Continue {
   width: 130px;
   padding: 10px;
@@ -64,49 +75,118 @@ img {
   margin-right: 20px;
   cursor: pointer;
 }
+
+.Continue:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+
 .CheckOut {
   background-color: #3371b5;
   color: white;
   border: none;
   padding: 10px;
   width: 130px;
-  margin: 0px 20px 20px 600px;
   height: 50px;
+  cursor: pointer;
+  //margin-bottom: 100px;
+  /* Added bottom margin to prevent footer overlap */
 }
+
 #price {
   font-size: smaller;
   font-weight: 200;
   text-decoration: line-through;
 }
 
-#increaseNumber {
-  width: 40px;
-  margin: 5px;
-  border: 0.5px solid rgb(176, 173, 173);
-  background: #fafafa 0% 0% no-repeat padding-box;
+/* FIXED FONT SIZES FOR SUMMARY SECTION */
+.right h1 {
+  font-size: 16px;
+  /* Reduced from default h1 size */
+  font-weight: 500;
+  /* Medium weight instead of bold */
+  margin: 5px 0;
+  /* Reduced margin for better spacing */
 }
+
+.right h2 {
+  font-size: 18px;
+  /* Book name - slightly larger but not too big */
+  font-weight: 600;
+  /* Semi-bold for book title */
+  margin: 8px 0 5px 0;
+  /* Better spacing */
+}
+
+.right p {
+  font-size: 14px;
+  /* Author name - smaller, clean */
+  color: #666;
+  /* Slightly muted color for author */
+  margin: 0 0 8px 0;
+  /* Minimal margin */
+}
+
+/* UPDATED STYLES FOR INCREMENT/DECREMENT CONTROLS */
+#increaseNumber {
+  width: 50px;
+  height: 35px;
+  margin: 8px;
+  border: 1px solid rgb(176, 173, 173);
+  background: #fafafa 0% 0% no-repeat padding-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .decrease,
 .increase {
   border-radius: 50%;
-  border: 0.5px solid rgb(176, 173, 173);
-
-  /* padding: 7px; */
+  border: 1px solid rgb(176, 173, 173);
   background: #fafafa 0% 0% no-repeat padding-box;
-  border: 1px solid #dbdbdb;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 5px;
 }
+
+.decrease:hover,
+.increase:hover {
+  background-color: #e0e0e0;
+  border-color: #999;
+}
+
+/* Quantity control container for better alignment */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
 .material-symbols-outlined {
   font-size: large;
   background-color: blue;
 }
+
 .second {
   width: 70%;
   height: 80px;
   border: 1px solid #e2e2e2;
   margin: 30px 0px 0px 150px;
 }
+
 .heading {
   margin: 30px 0px 10px 30px;
 }
+
 .addresssDetails {
   width: 70%;
   height: fit-content;
@@ -118,32 +198,104 @@ img {
 .fullName {
   width: 300px;
 }
+
 .mobileNumber {
   width: 300px;
 }
+
 .address {
   width: 630px;
 }
+
 #address {
   padding: 30px;
 }
+
 .first {
   display: flex;
   gap: 30px;
   padding-left: 30px;
 }
+
 .right {
   margin: 24px;
 }
+
 .checkout {
   display: flex;
   gap: 40px;
   height: 220px;
 }
+
 .carts {
   background: #f5f5f5 0% 0% no-repeat padding-box;
   border: 1px solid #e4e4e4;
   border-radius: 1px;
+}
+
+.checkout-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  gap: 15px;
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  //margin-left: 10px;
+}
+
+/* Empty Cart Styles */
+.empty-cart {
+  width: 70%;
+  height: 300px;
+  margin-left: 150px;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-cart-content {
+  text-align: center;
+  padding: 40px;
+}
+
+.empty-cart-content h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.empty-cart-content p {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.browse-books-btn {
+  background-color: #3371b5;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.browse-books-btn:hover {
+  background-color: #2c5d9a;
 }
 
 @media screen and (max-width: 600px) {
@@ -155,29 +307,207 @@ img {
   .summary {
     margin: 0%;
     width: 100%;
+    margin-bottom: 120px;
+    /* Increased bottom margin for mobile */
   }
+
   .addresssDetails {
     margin: 0%;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
+
   .first {
     display: flex;
     flex-direction: column;
     gap: 0px;
   }
+
   .address {
     width: 300px;
   }
 
-  .right {
-    margin: 10px;
-  }
   #homeCart {
     margin: 2%;
   }
+
+  /* MOBILE RESPONSIVE LAYOUT FOR CART AND SUMMARY */
+  .checkout {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .left {
+    align-self: center;
+    /* Center the image */
+    margin-bottom: 10px;
+    /* Space below image */
+  }
+
+  .left img {
+    width: 100px;
+    /* Smaller image for mobile */
+    height: 120px;
+    /* Proportional height */
+    margin: 0;
+    /* Remove default margins */
+  }
+
+  .right {
+    margin: 0;
+    /* Remove default margin */
+    padding: 0 10px;
+    /* Add horizontal padding */
+    text-align: left;
+    /* Align text to left */
+    width: 100%;
+    /* Full width */
+  }
+
+  /* Adjust text sizes for mobile */
+  .right h2 {
+    font-size: 16px;
+    /* Slightly smaller book title */
+    margin: 5px 0;
+    line-height: 1.3;
+  }
+
+  .right p {
+    font-size: 13px;
+    /* Smaller author text */
+    margin: 3px 0 8px 0;
+  }
+
+  .right h1 {
+    font-size: 14px;
+    /* Smaller price/quantity text */
+    margin: 3px 0;
+    line-height: 1.2;
+  }
+
+  /* Quantity controls layout for mobile */
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 8px 0;
+    flex-wrap: wrap;
+    /* Allow wrapping if needed */
+  }
+
+  /* Remove button styling improvements */
+  #removeBook {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+
+  /* MOBILE BUTTON ALIGNMENT FIXES */
+  .placeOrder {
+    float: none;
+    /* Remove float */
+    display: block;
+    /* Make it block element */
+    margin: 20px auto;
+    /* Center the button */
+    width: 150px;
+    /* Slightly wider for mobile */
+  }
+
+  .Continue {
+    display: block;
+    /* Make it block element */
+    margin: 20px auto 45px auto;
+    /* Center the button */
+    width: 150px;
+    /* Consistent width */
+  }
+
+  .CheckOut {
+    // display: block;
+    // /* Make it block element */
+    // margin: 20px auto 100px auto;
+    // /* Center with bottom margin */
+    // width: 150px;
+    // /* Consistent width */
+  }
+
+  /* Container for button centering */
+  .placeOrder,
+  .Continue,
+  .CheckOut {
+    text-align: center;
+    /* Center text inside button */
+  }
+
+  /* Mobile adjustments for quantity controls */
+  #increaseNumber {
+    width: 40px;
+    /* Smaller for mobile */
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .decrease,
+  .increase {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  /* Cart header adjustments */
+  .carts h2 {
+    font-size: 18px;
+    margin: 15px 0 15px 15px;
+  }
+  .checkout-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 20px;
+    gap: 10px;
+  }
+
+  .total-price {
+    margin-bottom: 0;
+  }
+
+  .CheckOut {
+    margin: 0;
+    width: 150px;
+  }
+
+  .empty-cart {
+    width: 100%;
+    margin: 15px 0;
+    height: 250px;
+  }
+  
+  .empty-cart-content {
+    padding: 20px;
+  }
+  
+  .empty-cart-content h2 {
+    font-size: 20px;
+  }
+  
+  .empty-cart-content p {
+    font-size: 14px;
+  }
+  
+  .browse-books-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 }
+
 @media (min-width: 601px) and (max-width: 1000px) {
   .second {
     width: 100%;
@@ -187,13 +517,17 @@ img {
   .summary {
     margin: 0%;
     width: 100%;
+    margin-bottom: 100px;
+    /* Added bottom margin for tablet view */
   }
+
   .addresssDetails {
     margin: 0%;
     width: 100%;
     display: flex;
     flex-direction: column;
   }
+
   .first {
     display: flex;
     gap: 30px;
@@ -202,7 +536,30 @@ img {
   .right {
     margin: 10px;
   }
+
   #homeCart {
     margin: 2%;
+  }
+
+  /* TABLET BUTTON ALIGNMENT */
+  .CheckOut {
+    // margin: 20px auto 100px auto;
+    // /* Center the checkout button */
+    // display: block;
+  }
+  .checkout-footer {
+    margin-bottom: 100px;
+    padding: 0 20px 20px 20px;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+
+  .total-price {
+    font-size: 18px;
+  }
+
+  .empty-cart {
+    width: 100%;
+    margin: 15px 0;
   }
 }

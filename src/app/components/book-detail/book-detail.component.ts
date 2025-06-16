@@ -28,12 +28,12 @@ export class BookDetailComponent implements OnInit, OnDestroy {
   feedbacks = [
     {
       userId: { fullName: 'Aniket Chile' },
-      rating: 3,
+      rating: 4,
       comment: `Good product. Even though the translation could have been better, Chanakya's neeti are thought provoking. Chanakya has written on many different topics and his writings are succinct.`,
     },
     {
       userId: { fullName: 'Shweta Bodkar' },
-      rating: 4,
+      rating: 3,
       comment: `Good product. Even though the translation could have been better, Chanakya's neeti are thought provoking. Chanakya has written on many different topics and his writings are succinct.`,
     },
   ];

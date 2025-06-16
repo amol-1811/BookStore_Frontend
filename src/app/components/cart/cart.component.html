@@ -1,11 +1,21 @@
 <div>
   <div>
-    <h2 id="homeCart"><span routerLink="/dashboard/books" style="color: gray;">dashboard</span>/My Cart</h2>
+    <h2 id="homeCart"><span class="dash" routerLink="/dashboard/books" style="color: gray;">dashboard</span>/My Cart</h2>
   </div>
-  <div class="summary">
+  
+  <!-- Empty Cart Message -->
+  <div *ngIf="!cartItemsArray || cartItemsArray.length === 0" class="empty-cart">
+    <div class="empty-cart-content">
+      <h2>Nothing is added into the cart</h2>
+      <p>Your cart is empty. Browse our collection and add some books!</p>
+      <button routerLink="/dashboard/books" class="browse-books-btn">Browse Books</button>
+    </div>
+  </div>
+
+  <!-- Cart Content - Only show when items exist -->
+  <div *ngIf="cartItemsArray && cartItemsArray.length > 0" class="summary">
     <div class="carts">
       <h2 style="margin: 10px 0px 20px 20px">My Cart({{ cartItemsArray?.length }})</h2>
-
     </div>
     <div *ngFor="let cartItem of cartItemsArray; let i = index" class="checkout"
       [ngClass]="{'checkout-even': i % 2 === 0, 'checkout-odd': i % 2 !== 0}">
@@ -33,6 +43,7 @@
     </div>
   </div>
 </div>
+
 <div class="second" *ngIf="address">
   <h2 class="heading">Address Details</h2>
 </div>
@@ -47,7 +58,7 @@
           <p class="heading1">Full Name</p>
           <mat-form-field appearance="outline" class="fullName">
             <input matInput type="text" formControlName="fullName" />
-            <mat-error>Enter Your FullName</mat-error>
+            <mat-error *ngIf="CustomerDetails.get('fullName')?.hasError('required') && CustomerDetails.get('fullName')?.touched">Enter Your FullName</mat-error>
           </mat-form-field>
         </div>
 
@@ -55,7 +66,7 @@
           <p>Mobile Number</p>
           <mat-form-field appearance="outline" class="mobileNumber">
             <input matInput formControlName="mobileNumber" />
-            <mat-error>Enter Your Mobile Number</mat-error>
+            <mat-error *ngIf="CustomerDetails.get('mobileNumber')?.hasError('required') && CustomerDetails.get('mobileNumber')?.touched">Enter Your Mobile Number</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -64,7 +75,7 @@
         <p>Address</p>
         <mat-form-field appearance="outline" class="address">
           <input matInput type="text" formControlName="address" />
-          <mat-error>Enter your Address</mat-error>
+          <mat-error *ngIf="CustomerDetails.get('address')?.hasError('required') && CustomerDetails.get('address')?.touched">Enter your Address</mat-error>
         </mat-form-field>
       </div>
 
@@ -73,7 +84,7 @@
           <p class="heading1">City/town</p>
           <mat-form-field appearance="outline" class="fullName">
             <input matInput type="text" formControlName="city" />
-            <mat-error>Enter City Name</mat-error>
+            <mat-error *ngIf="CustomerDetails.get('city')?.hasError('required') && CustomerDetails.get('city')?.touched">Enter City Name</mat-error>
           </mat-form-field>
         </div>
 
@@ -81,7 +92,7 @@
           <p>State</p>
           <mat-form-field appearance="outline" class="mobileNumber">
             <input matInput id="state" formControlName="state" />
-            <mat-error>Enter State Name</mat-error>
+            <mat-error *ngIf="CustomerDetails.get('state')?.hasError('required') && CustomerDetails.get('state')?.touched">Enter State Name</mat-error>
           </mat-form-field>
         </div>
       </div>
@@ -95,11 +106,12 @@
             </p>
           </mat-radio-button>
         </mat-radio-group>
+        <mat-error *ngIf="CustomerDetails.get('selectedAddressType')?.hasError('required') && CustomerDetails.get('selectedAddressType')?.touched" style="margin-left: 30px; font-size: 12px; color: #f44336;">Select Address Type</mat-error>
       </div>
 
     </div>
     <div style="display: flex; justify-content: end">
-      <button class="Continue" *ngIf="continue" type="submit" (click)="onContinue()">
+      <button class="Continue" *ngIf="continue" type="submit" [disabled]="CustomerDetails.invalid" (click)="onContinue()">
         Continue
       </button>
     </div>
@@ -113,28 +125,21 @@
   <h2 class="heading">Order Summary</h2>
   <div *ngFor="let cartItem of cartItemsArray; let i = index" class="checkout"
     [ngClass]="{'checkout-even': i % 2 === 0, 'checkout-odd': i % 2 !== 0}">
-    <ng-container *ngIf="getBookDetail(cartItem.bookId) as book">
-      <div class="left">
-        <img [src]="book.bookImage" class="checkimage" />
-      </div>
-      <div class="right">
-        <h2>{{ book.bookName }}</h2>
-        <p>{{ book.author }}</p>
-        <h1>
-          Rs. {{ book.price }}
-          <!-- <span id="price">Rs. {{ book.price }}</span> -->
-        </h1>
-        <h1> TotalPrice
-          Rs. {{ cartItem.totalPrice }}
-          <!-- <span id="price">Rs. {{ cartItem.totalPrice }}</span> -->
-        </h1>
-
-      </div>
-    </ng-container>
+    <div class="left">
+      <img [src]="cartItem.bookModel.bookImage" class="checkimage" />
+    </div>
+    <div class="right">
+      <h2>{{ cartItem.bookModel.bookName }}</h2>
+      <p>{{ cartItem.bookModel.author }}</p>
+      <h1>
+        Rs. {{ cartItem.price }}
+      </h1>
+      <h1>Quantity: {{ cartItem.quantity }}</h1>
+    </div>
   </div>
 
-
-  <div style="display: flex; justify-content: end">
-    <button routerLink="/dashboard/order" class="CheckOut" (click)="confirmOrder()">CHECKOUT</button>
+  <div class="checkout-footer">
+    <h3 class="total-price">Total Price: Rs. {{ calculateTotalPrice() }}</h3>
+    <button routerLink="/dashboard/confirm-order" class="CheckOut" (click)="confirmOrder()">CHECKOUT</button>
   </div>
 </div>

@@ -93,8 +93,8 @@ export class GetAllBooksComponent implements OnInit {
 
   sortByLowestPrice(): void {
     this.bookArray = [...this.bookArray].sort((a: any, b: any) => {
-      const priceA = a.discountPrice || a.price || 0;
-      const priceB = b.discountPrice || b.price || 0;
+      const priceA =  a.price || 0;
+      const priceB =  b.price || 0;
       return priceA - priceB;
     });
     console.log('Sorted by lowest price:', this.bookArray);

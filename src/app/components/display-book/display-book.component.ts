@@ -45,10 +45,12 @@ export class DisplayBookComponent implements OnInit, OnChanges {
         
         if (typeof res === 'string') {
           this.Search = res;
-        } else if (Array.isArray(res)) {
+        } else if (Array.isArray(res?.data)) {
+          console.log('Received data is an array:', res.data);
           // If it's an array, it might be filtered books
-          this.filteredBooks = res;
-          this.totalProduct = res.length;
+          this.filteredBooks = res.data || [];
+          this.totalProduct = res?.data.length;
+          this.bookArray = res.data || [];
           return;
         }
         

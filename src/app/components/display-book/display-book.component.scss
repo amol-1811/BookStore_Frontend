@@ -55,13 +55,15 @@
   cursor: pointer;
   padding: 10px;
   box-sizing: border-box;
+  background: #f9f7f7; /* Same as card background */
 }
 
 .book-details {
-  padding: 0 1rem 1rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1; /* Allows this section to fill the available space */
+  background: #f0f0f0; /* Light gray background for details section */
 }
 
 .book-title {
@@ -139,12 +141,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .book-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 /* Responsive Adjustments for Mobile View */
 @media screen and (max-width: 600px) {
   .books-heading {
@@ -159,22 +155,40 @@
   }
 
   .book-card {
-    flex-direction: row; /* Display card content side-by-side */
+    flex-direction: column; /* Changed from 'row' to 'column' to stack vertically */
     align-items: center;
     padding: 10px;
   }
 
   .book-image {
-    width: 100px; /* Fixed width for the image */
-    height: 120px;
-    padding: 0;
-    margin-right: 15px;
+    width: 120px; /* Adjusted width for better mobile display */
+    height: 140px; /* Adjusted height proportionally */
+    padding: 10px;
+    margin-right: 0; /* Removed right margin since it's now stacked */
+    margin-bottom: 10px; /* Added bottom margin for spacing */
     flex-shrink: 0; /* Prevents the image from shrinking */
+    background: #f9f7f7; /* Keep same background for mobile */
   }
 
   .book-details {
-    padding: 0;
+    padding: 10px;
     flex-grow: 1;
-    align-items: flex-start; /* Align details to the start */
+    align-items: center; /* Center align the details */
+    text-align: center; /* Center align the text */
+    width: 100%; /* Ensure details take full width */
+    background: #f0f0f0; /* Gray background for mobile details */
+  }
+
+  /* Optional: Adjust font sizes for better mobile readability */
+  .book-title {
+    font-size: 16px; /* Slightly larger for mobile */
+  }
+
+  .book-author {
+    font-size: 14px; /* Slightly larger for mobile */
+  }
+
+  .current-price {
+    font-size: 18px; /* Larger price for mobile */
   }
 }

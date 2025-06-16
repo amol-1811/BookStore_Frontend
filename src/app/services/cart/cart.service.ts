@@ -19,7 +19,6 @@ export class CartService {
     console.log('Cart badge count updated to:', count);
   }
 
-  // Method to refresh cart count from server
   refreshCartCount(): void {
     this.getCart().subscribe(
       (response: any) => {

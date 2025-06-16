@@ -9,17 +9,17 @@ import { CartService } from 'src/app/services/cart/cart.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
   allBooks: any = [];
   constructor(
     private cartService: CartService,
     private formBuilder: FormBuilder,
     private snackbar: MatSnackBar,
     private bookService: BookService
-  ) {}
+  ) { }
   cartItemsArray: any = [];
-  cart : any = {};
-  
+  cart: any = {};
+
   CustomerDetails!: FormGroup;
   addressType: string[] = ['Home', 'work', 'others'];
   count: any;
@@ -34,12 +34,23 @@ export class CartComponent implements OnInit{
     this.getAllBook();
     this.CustomerDetails = this.formBuilder.group({
       fullName: ['', [Validators.required]],
-      mobileNumber: ['', [Validators.required]],
+      mobileNumber: ['', [Validators.required, Validators.pattern("^[0-9]{10}$")]], // Added pattern for 10-digit mobile number
       address: ['', [Validators.required]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
       selectedAddressType: ['', [Validators.required]],
     });
+  }
+
+  calculateTotalPrice(): number {
+    if (!this.cartItemsArray || this.cartItemsArray.length === 0) {
+      return 0;
+    }
+    
+    return this.cartItemsArray.reduce((total: number, cartItem: any) => {
+      const itemTotal = (cartItem.bookModel?.price || 0) * (cartItem.quantity || 0);
+      return total + itemTotal;
+    }, 0);
   }
 
   getBookDetail(bookId: number) {
@@ -82,7 +93,7 @@ export class CartComponent implements OnInit{
 
   deleteSingleBook(cartItemId: number) {
     console.log('Removing cart item with ID:', cartItemId);
-    
+
     this.cartService.removeFromCart(cartItemId).subscribe(
       (response: any) => {
         console.log('Remove from cart API response:', response);
@@ -108,9 +119,11 @@ export class CartComponent implements OnInit{
   }
 
   onContinue() {
-    this.customerDetails = true;
-    console.log(this.customerDetails);
+    // Mark all fields as touched to display validation errors immediately
+    this.CustomerDetails.markAllAsTouched();
+
     if (this.CustomerDetails.valid) {
+      this.customerDetails = true; // This line seems redundant as `customerDetails` is not used to control visibility
       this.summary = false;
       this.continue = false;
       console.log('Customer Details is called', this.CustomerDetails.value);
@@ -122,7 +135,7 @@ export class CartComponent implements OnInit{
         state: this.CustomerDetails.value.state,
         type: this.CustomerDetails.value.selectedAddressType,
       };
-      
+
       this.cartService.customersDetails(data).subscribe(
         (response: any) => {
           console.log('Customer details response:', response);
@@ -130,6 +143,8 @@ export class CartComponent implements OnInit{
             duration: 3000,
             verticalPosition: 'bottom',
           });
+          // This part handles successful API call, if backend validation fails, you might want to adjust
+          // what happens here, e.g., show an error and keep the form visible.
         },
         (error) => {
           console.error('Error saving customer details:', error);
@@ -137,10 +152,13 @@ export class CartComponent implements OnInit{
             duration: 3000,
             verticalPosition: 'bottom',
           });
+          // If backend validation fails, keep the form and `continue` button visible
+          this.summary = true; // Keep summary hidden
+          this.continue = true; // Keep continue button visible
         }
       );
     } else {
-      this.snackbar.open('Please fill all required fields', '', {
+      this.snackbar.open('Please fill all required fields correctly', '', {
         duration: 2000,
         verticalPosition: 'bottom',
       });
@@ -161,7 +179,7 @@ export class CartComponent implements OnInit{
       });
       return;
     }
-    
+
     const newQuantity = cartItem.quantity - 1;
     console.log('Decreasing quantity to:', newQuantity);
     this.updateCount(cartItem.bookModel.bookId, newQuantity);
@@ -169,7 +187,7 @@ export class CartComponent implements OnInit{
 
   updateCount(bookId: number, quantity: number) {
     console.log('Updating cart - BookId:', bookId, 'Quantity:', quantity);
-    
+
     this.cartService.updateCart(bookId, quantity).subscribe(
       (response: any) => {
         console.log('Update cart response:', response);
